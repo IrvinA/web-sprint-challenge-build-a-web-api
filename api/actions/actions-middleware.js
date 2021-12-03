@@ -16,7 +16,7 @@ function validateActionID(req, res, next) {
     .catch(next);
 }
 
-function validatePost(req, res, next) {
+function validateActionPost(req, res, next) {
   const { description, notes } = req.body;
   if (!description) {
     next({
@@ -40,5 +40,5 @@ function validatePost(req, res, next) {
 
 module.exports = {
   validateActionID,
-  validatePost,
+  validateActionPost,
 };
