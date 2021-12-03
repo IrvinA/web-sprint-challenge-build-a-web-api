@@ -33,7 +33,30 @@ function validatePost(req, res, next) {
   }
 }
 
+function validateUpdatedPost(req, res, next) {
+  const { name, description, completed } = req.body;
+  if (!name) {
+    next({
+      status: 400,
+      message: 'Missing name',
+    });
+  } else if (!description) {
+    next({
+      status: 400,
+      message: 'Missing description',
+    });
+  } else if (completed === undefined) {
+    next({
+      status: 400,
+      message: 'Project completion status is missing',
+    });
+  } else {
+    next();
+  }
+}
+
 module.exports = {
   validateProjectID,
-  validatePost
+  validatePost,
+  validateUpdatedPost,
 };
