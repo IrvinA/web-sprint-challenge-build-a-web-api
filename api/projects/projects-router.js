@@ -18,6 +18,9 @@ router.get('/', (req, res, next) => {
     .catch(next);
 });
 
-
+// eslint-disable-next-line no-unused-vars
+router.get('/:id', validateProjectID, (req, res, next) => {
+  res.status(200).json(req.project);
+});
 
 module.exports = router;
