@@ -30,6 +30,12 @@ router.post('/', validateActionPost, (req, res, next) => {
     .catch(next);
 });
 
-
+router.put('/:id', validateActionID, validateActionPost, (req, res, next) => {
+  Actions.update(req.params.id, req.body)
+    .then((action) => {
+      res.status(200).json(action);
+    })
+    .catch(next);
+});
 
 module.exports = router;

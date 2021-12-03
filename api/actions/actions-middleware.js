@@ -17,8 +17,13 @@ function validateActionID(req, res, next) {
 }
 
 function validateActionPost(req, res, next) {
-  const { description, notes } = req.body;
-  if (!description) {
+  const { project_id, description, notes } = req.body;
+  if (!project_id) {
+    next({
+      status: 400,
+      message: 'Project ID is missing',
+    });
+  } else if (!description) {
     next({
       status: 400,
       message: 'Description is missing',
