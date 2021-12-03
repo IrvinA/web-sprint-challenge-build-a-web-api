@@ -17,4 +17,8 @@ router.get('/', (req, res, next) => {
     .catch(next);
 });
 
+router.get('/:id', validateActionID, (req, res, next) => {
+  res.status(200).json(req.action);
+});
+
 module.exports = router;
