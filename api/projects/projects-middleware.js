@@ -16,6 +16,24 @@ function validateProjectID(req, res, next) {
     .catch(next);
 }
 
-module.exports = {
-    validateProjectID,
+function validatePost(req, res, next) {
+  const { name, description } = req.body;
+  if (!name) {
+    next({
+      status: 400,
+      message: 'Missing name',
+    });
+  } else if (!description) {
+    next({
+      status: 400,
+      message: 'Missing description',
+    });
+  } else {
+    next();
+  }
 }
+
+module.exports = {
+  validateProjectID,
+  validatePost
+};
